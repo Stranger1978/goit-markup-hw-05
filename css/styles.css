@@ -99,8 +99,8 @@ img {
     content: '';
     position: absolute;
     left: 0;
-    bottom: 0;
-
+    bottom: -1px;
+    
     width: 100%;
     height: 4px;
     border-radius: 2px;
@@ -225,13 +225,17 @@ img {
 }
 
 .hero-button {
+    width: 200px;
+    height: 50px;
+    border: transparent;
+    border-radius: 4px;
+
     background-color: var(--accent-color);
     color: #FFFFFF;
     font-weight: 700; /*переназначаем для кнопки */
     font-size: 16px; /* переназначаем для кнопки */
     line-height: 1.88; /*в макете дизайнером указано значение в %*/
-    width: 200px;
-    height: 50px;
+    letter-spacing: 0.06em;
 
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -329,17 +333,19 @@ img {
 
 .thumb-title {
     position: absolute;
-    padding: 27px 0;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    height: 70px;
     bottom: 0;
     left: 0;
     width: 100%;
     background-color: rgba(47, 48, 58, 0.8);
 
     font-weight: 700;
-    ont-size: 14px;
+    font-size: 14px;
     line-height: 16px;
-    text-align: center;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -671,6 +677,7 @@ img {
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* backdrop&modal */
 
 .backdrop {
     position: fixed;
@@ -686,10 +693,12 @@ img {
 .backdrop.is-hidden {
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
 }
 
 .backdrop.is-hidden .modal {
     transform: translate( -50%, -50%) scale(0.5);
+    opacity: 0.5;
 }
 .modal {
     display: flex;
@@ -700,8 +709,10 @@ img {
     top: 50%;
     left: 50%;
     transform: translate( -50%, -50%) scale(1);
+    opacity: 1;
 
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
     
     height: 581px;
     width:  528px;
